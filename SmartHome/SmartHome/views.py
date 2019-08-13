@@ -4,7 +4,7 @@
 from flask import Flask,request,abort,jsonify ,render_template
 from flask_api import status
 from SmartHome import app
-import SmartHome.api
+from SmartHome.api import callAPI
 
 @app.route('/')
 def home():
@@ -14,11 +14,11 @@ def home():
 @app.route('/iot',methods=["POST"])
 def endpoint():
     try:
-        dic = request.json()
+        dic = request.json
         target = dic['target'] if 'target' in dic else ''
         switch = dic['switch'] if 'switch' in dic else ''
         color = dic['color'] if 'color' in dic else ''
-        return api.callAPI(target, switch, color)
+        return callAPI(target, switch, color)
     except:
         return "ERROR", status.HTTP_500_INTERNAL_SERVER_ERROR
 

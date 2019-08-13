@@ -32,20 +32,20 @@ def AirConditioner(switch:bool, degree:int=27):
 
 def callAPI(target:str, switch_str:str, color_str:str=None):
 
-    switch = (switch_str.upper == 'ON')
+    switch = (switch_str.upper() == 'ON')
     if color_str in colors:
         color = color_str
     else:
         color = None
 
-    if target.upper == 'light'.upper:
+    if target.upper() == 'light'.upper():
         CeilingLight(switch)
-    elif target.upper == 'LED':
+    elif target.upper() == 'LED':
         if color == None:
             LED(switch)
         else:
             LED_color(color)
-    elif target.upper == 'air'.upper:
+    elif target.upper() == 'air'.upper():
         AirConditioner(switch)
     else:
         return "target  ot exist", status.HTTP_204_NO_CONTENT
