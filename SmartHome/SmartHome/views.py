@@ -14,7 +14,7 @@ def home():
 @app.route('/iot',methods=["POST"])
 def endpoint():
     try:
-        dic = request.json
+        dic = request.json()
         target = dic['target'] if 'target' in dic else ''
         switch = dic['switch'] if 'switch' in dic else ''
         color = dic['color'] if 'color' in dic else ''
