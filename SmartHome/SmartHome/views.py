@@ -1,37 +1,26 @@
-"""
-Routes and views for the flask application.
-"""
+#!/usr/bin/python3
+# -*- Coding: utf-8 -*-
 
-from datetime import datetime
-from flask import render_template
+from flask import Flask,request,abort,jsonify ,render_template
+from flask_api import status
 from SmartHome import app
+import SmartHome.api
 
 @app.route('/')
-@app.route('/home')
 def home():
-    """Renders the home page."""
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-    )
+    #特に何もしない
+    return "Hello!", status.HTTP_200_OK
 
-@app.route('/contact')
-def contact():
-    """Renders the contact page."""
-    return render_template(
-        'contact.html',
-        title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
-    )
+@app.route('/iot',methods=["POST"])
+def endpoint():
+    try:
+        dic = request.json
+        target = dic['target'] if 'target' in dic else ''
+        switch = dic['switch'] if 'switch' in dic else ''
+        color = dic['color'] if 'color' in dic else ''
+        return api.callAPI(target, switch, color)
+    except:
+        return "ERROR", status.HTTP_500_INTERNAL_SERVER_ERROR
 
-@app.route('/about')
-def about():
-    """Renders the about page."""
-    return render_template(
-        'about.html',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
-    )
+if __name__ == '__main__':
+    pass

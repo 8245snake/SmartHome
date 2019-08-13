@@ -1,6 +1,5 @@
-"""
-This script runs the SmartHome application using a development server.
-"""
+#!/usr/bin/python3
+# -*- Coding: utf-8 -*-
 
 from os import environ
 from SmartHome import app

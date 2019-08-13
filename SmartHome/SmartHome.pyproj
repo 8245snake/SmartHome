@@ -28,11 +28,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
+    <Compile Include="SmartHome\api.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SmartHome\remoteIR.py" />
+    <Compile Include="SmartHome\util\irrp.py" />
     <Compile Include="SmartHome\__init__.py" />
     <Compile Include="SmartHome\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SmartHome\" />
+    <Folder Include="SmartHome\util\" />
     <Folder Include="SmartHome\static\" />
     <Folder Include="SmartHome\static\content\" />
     <Folder Include="SmartHome\static\fonts\" />
@@ -41,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="SmartHome\codes" />
     <Content Include="SmartHome\static\content\bootstrap.css" />
     <Content Include="SmartHome\static\content\bootstrap.min.css" />
     <Content Include="SmartHome\static\content\site.css" />
@@ -63,10 +70,6 @@
     <Content Include="SmartHome\static\scripts\respond.js" />
     <Content Include="SmartHome\static\scripts\respond.min.js" />
     <Content Include="SmartHome\static\scripts\_references.js" />
-    <Content Include="SmartHome\templates\about.html" />
-    <Content Include="SmartHome\templates\contact.html" />
-    <Content Include="SmartHome\templates\index.html" />
-    <Content Include="SmartHome\templates\layout.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
